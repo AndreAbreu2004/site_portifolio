@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class IntroductionSectionWeb extends StatelessWidget {
   const IntroductionSectionWeb({super.key});
@@ -13,23 +14,20 @@ class IntroductionSectionWeb extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RichText(
-                  text: const TextSpan(
-                      children: <TextSpan> [
+                  text: TextSpan(
+                    style: TextStyle(
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                      fontSize: 48,
+                      color: Colors.white,
+                    ),
+                      children: const <TextSpan> [
                         TextSpan(
                           text: "// Prazer, eu me chamo ",
-                          style: TextStyle(
-                              fontSize: 48,
-                              fontWeight: FontWeight.w100,
-                              color: Colors.white
-                          ),
+                          style: TextStyle(fontWeight: FontWeight.w100),
                         ),
                         TextSpan(
-                            text: "André",
-                            style: TextStyle(
-                                fontSize: 48,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.white
-                            )
+                          text: "André",
+                          style: TextStyle(fontWeight: FontWeight.w900),
                         ),
                       ]
                   )
