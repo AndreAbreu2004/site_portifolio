@@ -1,4 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:site_portifolio/widgets/abilities_section_web.dart';
+import 'package:site_portifolio/widgets/introduction_section_web.dart';
+import 'package:site_portifolio/widgets/projects_section_web.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,98 +15,50 @@ class HomePage extends StatelessWidget {
         leadingWidth: 300,
         toolbarHeight: 80,
         backgroundColor: const Color.fromRGBO(22, 21, 19, 1),
-        leading: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
-          child: Text("_andreabreu",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            softWrap: false,
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: const Text("_andreabreu",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-        ),
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Icon(
-                Icons.menu,
-                color: Colors.white,
-              ),
-            ),
-            Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-          ],
+          softWrap: false,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32.0),
-            child: SizedBox(
-              width: 1400,
-              child: Column(
-                children: [
-                  const SizedBox(height: 128),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 16.0),
-                              child: RichText(
-                                text: const TextSpan(
-                                  children: <TextSpan> [
-                                    TextSpan(
-                                      text: "Prazer, eu me chamo ",
-                                      style: TextStyle(
-                                      fontSize: 48,
-                                      fontWeight: FontWeight.w100,
-                                      color: Colors.white
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: "André",
-                                      style: TextStyle(
-                                      fontSize: 48,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.white
-                                      )
-                                    ),
-                                  ]
-                                )
-                              ),
-                            ),
-                            const Text(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare risus at massa ornare, eu consectetur ligula efficitur. Praesent elementum mauris ipsum, vitae scelerisque nisl posuere id. Proin turpis neque, ullamcorper eget odio in, tincidunt congue lorem.",
-                              style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w100,
-                              color: Colors.white
-                              ),
-                            ),
-                          ]
-                        ),
-                      ),
-                      const SizedBox(width: 32),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(height: 480, width: 480, color: Colors.grey),
-                        ],
-                      ),
-                    ],
+      body: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1920, minWidth: 800),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 128.0, horizontal: 40.0),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 1200),
+                    child: const IntroductionSectionWeb(),
                   ),
-                  const SizedBox(height: 128),
-                ],
-              ),
+                ),
+                Container(
+                  height: 300,
+                  width: double.infinity,
+                  color: const Color.fromRGBO(0, 157, 222, 1),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 40.0),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 1200),
+                      child: const AbilitiesSectionWeb()
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 64.0, horizontal: 40.0),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 1200),
+                    child: const ProjectsSectionWeb(),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
